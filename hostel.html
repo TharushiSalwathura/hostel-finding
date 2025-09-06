@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', Helvetica, sans-serif;
+      background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.1)), url('img/imgbg.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .btn-primary{
+        background-color: #ff7300 !important;
+        border-color: #ff7300 !important;
+    }
+
+    .btn-primary:hover{
+        background-color: #000000 !important;
+        border-color: #000000 !important;
+        color: #ffffff !important;
+    }
+
+    .fixed-top{
+        padding: 1rem;
+        background-color: #000000 !important;
+    }
+
+    .logosize{
+        width: 250px;
+    }
+
+    .hero-section {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                  url('https://via.placeholder.com/1600x900') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+    }
+
+    .features {
+      padding: 60px 0;
+    }
+
+    .feature-box {
+      padding: 20px;
+      border-radius: 8px;
+      background: #f8f9fa;
+      transition: 0.3s;
+    }
+
+    .feature-box:hover {
+      background: #e9ecef;
+      transform: translateY(-5px);
+    }
+
+    .footer {
+      background: #343a40;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">THE STAYNEST</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <img class="logosize" src="img/logo.png">
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <h1>Welcome to Hostel Finder</h1>
+                <p>Find safe, peaceful, and affordable hostels with just a click.</p>
+                <a href="#signup" class="btn btn-primary btn-lg mt-3">Get Started</a>
+            </div>
+        </div>
+
+    </div>
+    
+  </section>
+
+
+
+
+  <!-- Bootstrap JS + jQuery + Popper -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Internal JS -->
+  <script>
+    function showAlert() {
+      alert("Thank you for signing up!");
+    }
+  </script>
+
+</body>
+</html>

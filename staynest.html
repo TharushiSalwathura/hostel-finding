@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Staynest</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', Helvetica, sans-serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: #000000 !important;
+}
+.p-3 {
+    padding: 5px 5px !important;
+    display: flex;
+
+}
+
+.py-5 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+   
+}
+
+ .btn-outline-primary {
+    --bs-btn-color: #ff7300;
+    --bs-btn-border-color: #ff7300;
+    --bs-btn-hover-color: #000000;
+    --bs-btn-hover-bg: lab(100% 0.01 -0.01);
+    --bs-btn-hover-border-color: #000000;
+    --bs-btn-focus-shadow-rgb: 13, 110, 253;
+    --bs-btn-active-color: #ff7300;
+    --bs-btn-active-bg: #ff7300;
+    --bs-btn-active-border-color: #ff7300;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #000000;
+    --bs-btn-disabled-bg: #f7f5f5;
+    --bs-btn-disabled-border-color: #ffffff;
+    --bs-gradient: none;
+}
+
+.container{
+
+        --bs-gutter-x: 1rem;
+}
+
+
+
+.logoimg{
+    max-height:100px;
+    margin-left: 1rem;
+    width: auto;
+
+}
+
+.cardimg{
+     font-family: 'Plus Jakarta Sans', Helvetica, sans-serif;
+      background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.1)), url('img/imgbg.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      
+      
+}
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #ffffff;
+    --bs-btn-border-color: #000000;
+    --bs-btn-hover-color: #000000;
+    --bs-btn-hover-bg: #000000;
+    --bs-btn-hover-border-color: #000000;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #fff;
+    --bs-btn-active-border-color: #000000;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #fff;
+    --bs-btn-disabled-border-color: #fff;
+
+}
+.row img{
+    height:auto;
+    width: 100%;
+    align-items: center;
+}
+.col {
+        flex: 0 0 auto;
+        width: 33.33333333%;
+        flex-wrap: wrap;
+       
+    }
+
+.col-md-3 {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+
+a {
+    color: rgb(0 0 0);
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 0px;}
+
+   
+
+ /* Menu Icon */
+ .menu-icon {
+  font-size: 25px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  background: #000000;
+  padding: 8px 12px;
+  border-radius: 6px;
+  z-index: 1001;
+}
+
+
+/* Side Menu */
+.side-menu {
+  height: 100%;
+  width: 0;   /* Start closed */
+  position: fixed;   /* Use fixed so it stays in place */
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 80px;
+  z-index: 1000;
+}
+
+.side-menu a {
+  padding: 12px 14px;
+  text-decoration: none;
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  display: block;
+  transition: 0.3s;
+}
+
+.side-menu a:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.side-menu  {
+  position:absolute;
+  top: 0px;
+  right: 20px;
+  font-size: 18px;
+  
+}
+.closebtn{
+ position:absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 18px;
+}
+
+        
+  </style>
+
+
+ 
+
+  <body font-family=" 'Plus Jakarta Sans', Helvetica, sans-serif;">
+
+    <!-- Menu Icon -->
+<div class="menu-icon" onclick="openMenu()">☰</div>
+
+<!-- Side Menu -->
+<div id="sideMenu" class="side-menu">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">×</a>
+  <a href="staynest.html">Home</a>
+  <a href="Single Room.html">Single Rooms</a>
+  <a href="Double Room.html">Double Rooms</a>
+  <a href="Shared Dorms.html">Shared Dorms</a>
+  <a href="Family Rooms.html">Family Rooms</a>
+  <a href="Apartments.html">Apartments</a>
+  <a href="#">Contact</a>
+  <a href="#">About</a>
+</div>
+
+    <header class="p-3 bg-light border-bottom">
+        <div class="container">  
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="#" class="navbar-brand">
+                    <img class="logoimg" src="img\logo.png">
+                </a>
+                <div class="d-flex align-items-center">
+                     
+                    <a href="#" class="btn btn-outline-primary">Post your ad</a>
+                   
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-5">
+
+        <section class="mb-5">
+            <h2 class="text-center mb-4"  >What are you looking for?</h2>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for a stay...">
+                <button class="btn btn-primary" type="button">🔍</button>
+            </div>
+        </section>
+
+        <section class="text-center mb-5" >
+            <div class="row img" >
+                <div class="col">
+                    
+                    <div class="card p-3 shadow-sm" id="singleRoomCard" >
+                        <img class="cardimg" src="img\single.jpg.jpg">
+                        <a href="C:\Users\THARUSHI\Desktop\hostel finding\single room.html">  <h5 class="mb-0"> Single Rooms </h5></a>
+                        
+                        
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-3 shadow-sm">
+                        <img class="cardimg" src="img\double.jpg">
+                       <a href="C:\Users\THARUSHI\Desktop\hostel finding\Double Room.html"> <h5 class="mb-0">Double Rooms</h5></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-3 shadow-sm">
+                        <img class="cardimg" src="img\share.webp">
+                        <a href="C:\Users\THARUSHI\Desktop\hostel finding\Shared Dorms.html"><h5 class="mb-0">Shared Dorms</h5></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-3 shadow-sm">
+                       <img class="cardimg" src="img\Family.webp"> 
+                        <a href="C:\Users\THARUSHI\Desktop\hostel finding\Family Rooms.html"><h5 class="mb-0">Family Rooms</h5></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-3 shadow-sm">
+                        <img class="cardimg" src="img\Apartments.webp">
+                        <a href="C:\Users\THARUSHI\Desktop\hostel finding\Apartments.html"><h5 class="mb-0">Apartments</h5></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-5">
+            <h2 class="text-center mb-4">About The Staynest</h2>
+            <p class="text-muted text-center">
+               StayNest makes it easy to find safe, affordable, and comfortable hostels near you. Whether you're a student or traveler, we help you discover verified stays that feel like home—quickly and hassle-free.
+        </section>
+
+    </main>
+    
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <h5>About</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50 text-decoration-none">About StayNest
+                         </a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Our Mission
+                        </a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Terms & Conditions
+                       </a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Privacy Policy
+                       </a></li>
+                       </ul>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h5>Download APP</h5>
+                    <div class="d-flex flex-column">
+                        <a href="#" class="btn btn-outline-light ">App Store</a>
+                        <a href="#" class="btn btn-outline-light">Google Play</a>
+                    </div>
+                </div>
+
+                 <div class="col-md-3 mb-3">
+                    <h5>Blog & Guides</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50 text-decoration-none">Hostel Living Tips
+
+                         </a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Student 
+                        </a></li>
+                       
+                       </ul>
+                </div>
+
+              <div class="col-md-3 mb-3">
+                    <h5>Accommodation Guide</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50 text-decoration-none">Budget Travel Hacks </a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Moving to a New City</a></li>
+                       <li><a href="#" class="text-white-50 text-decoration-none">Official Blog</a></li>
+                       
+                       </ul>
+                </div>    
+                <div class="col-md-3 mb-3">
+                    <h5>Social Media</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50 text-decoration-none">Facebook</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Instagram</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">TikTok</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">YouTube</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 border-secondary">
+            <div class="text-center text-white-50">
+                <p>&copy; 2024 The Staynest. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS + jQuery + Popper -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script>
+function openMenu() {
+  document.getElementById("sideMenu").style.width = "250px";
+}
+
+function closeMenu() {
+  document.getElementById("sideMenu").style.width = "0";
+}
+</script>
+
+  </body>
+</html>
