@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The Staynest</title>
+    <title>Accommodation The Staynest</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
@@ -148,75 +148,77 @@ a {
   font-size: 18px;
 
 }
-/* Hero / Navigation Image Full Width with Overlay */
-    .hero {
-  position: relative;
-  width: 100%;
-  height: 20rem; /* adjust height as needed */
-  background: url('img/single.jpg.jpg') center center / cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-}
-   .hero::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
-  z-index: 1;
-}
-     .hero-content {
-  position: relative; /* sits on top of overlay */
-  z-index: 2;
-}
 
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
 
-.hero-content p {
-  font-size: 1.2rem;
-}
-    .navimg{
-   width: 150rem;
-    height: 30rem;
-}
- /* Ads Grid */
-    .ads-grid {
-      padding: 20px;
-    }
-    .card {
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-      background-color: #fff;
-    }
-    .card:hover { transform: translateY(-5px); }
-    .card img {
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-      height: 200px;
-      object-fit: cover;
-    }
-    .card-body h5 { color: #ff7300; }
-
+ /* footer */
     .col-md-3 {
         flex: 0 0 auto;
         width: 20%;
     }
 
+   /* Container */
+    .container {
+      max-width: 1100px;
+      margin:0 auto; 
+      padding: 2px;    
+    }
+
+    /* Main section */
+    .about-main {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .about-main h2 {
+      color:#ff7300 !important;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    /* Cards layout */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin-bottom: 30px;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+    .card h3 {
+      color: #ff7300 !important;
+      margin-bottom: 12px;
+      font-size: 1.4rem;
+    }
+    .card p, .card ul li {
+      font-size: 0.95rem;
+      margin: 8px 0;
+    }
+    .card ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    
         
   </style>
 
 
  
 
-    <body font-family=" 'Plus Jakarta Sans', Helvetica, sans-serif;">
+ <body font-family=" 'Plus Jakarta Sans', Helvetica, sans-serif;">
 
     <!-- Menu Icon -->
 <div class="menu-icon" onclick="openMenu()">☰</div>
@@ -248,49 +250,65 @@ a {
             </div>
         </div>
     </header>
-
-    <main class="container my-5">
-
-        <section class="mb-5">
-            <h2 class="text-center mb-4"  >Search your location here....</h2>
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for a stay...">
-                <button class="btn btn-primary" type="button">🔍</button>
-            </div>
-        </section>
-
-
-
-     <!-- Hero / Navigation Image Full Width with Overlay -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Find Your Perfect Single Room</h1>
-    <p>Browse safe and affordable rooms posted directly by users near universities and transport hubs.</p>
-  </div>
-</section>
-
-   <!-- Ads Grid -->
-  <section class="ads-grid container">
-    <div class="row g-4">
-      
-      <!-- Single Room Card Template (Data from DB) -->
-      <div class="col-md-4">
-        <div class="card">
-          <img src="{{room_image}}" alt="{{room_title}}">
-          <div class="card-body">
-            <h5>{{room_title}}</h5>
-            <p>Location: {{room_location}}</p>
-            <p>Price: {{room_price}}</p>
-            <p>Contact: {{room_contact}}</p>
-          </div>
-        </div>
+    <div class="container">
+      <!-- Accommodation Guide Main -->
+      <div class="about-main">
+        <h2>Accommodation Guide</h2>
+        <p>Get the best tips and strategies to make your travel and hostel stay smooth, affordable, and enjoyable.</p>
       </div>
 
-      <!-- Repeat the above card block dynamically for each room -->
+      <!-- Four Cards with Full Content -->
+      <div class="cards">
+        
+        <!-- Budget Travel Hacks -->
+        <div class="card">
+          <h3>Budget Travel Hacks</h3>
+          <p>Traveling on a budget doesn’t mean missing out on experiences. Here are some hacks:</p>
+          <ul>
+            <li>Use hostel kitchens to cook your own meals instead of eating out.</li>
+            <li>Travel during off-season to get cheaper rates for accommodation and activities.</li>
+            <li>Use public transport or shared rides instead of taxis.</li>
+            <li>Look for student discounts or special deals online.</li>
+          </ul>
+          <p>With these hacks, you can save money while enjoying every moment of your trip.</p>
+        </div>
 
-    </div>
-  </section>
+        <!-- Moving to a New City -->
+        <div class="card">
+          <h3>Moving to a New City</h3>
+          <p>Relocating can be stressful, but these tips will help you adjust faster:</p>
+          <ul>
+            <li>Plan your accommodation in advance and choose areas close to work or campus.</li>
+            <li>Learn the public transport routes and local amenities.</li>
+            <li>Connect with local communities or student groups to make friends.</li>
+            <li>Keep essential documents and belongings organized for an easier move.</li>
+          </ul>
+          <p>Adapting quickly helps you feel at home and enjoy your new environment.</p>
+        </div>
 
+        <!-- Official Blog -->
+        <div class="card">
+          <h3>Official Blog</h3>
+          <p>The StayNest Official Blog is full of guides, tips, and stories about hostel living, student life, and travel adventures:</p>
+          <ul>
+            <li>Stories from students living in hostels around the world.</li>
+            <li>Tips on budgeting, organizing, and traveling smartly.</li>
+            <li>Reviews of hostels and accommodation services.</li>
+            <li>Advice for first-time travelers and students moving to new cities.</li>
+          </ul>
+          <p>Follow our blog to stay updated and get inspired for your next adventure.</p>
+        </div>
+
+        <!-- Optional: Add a 4th card or leave blank if you want only 3 cards -->
+      </div>
+    </div>   
+ 
+       
+     
+
+  
+
+ 
 
    
     
@@ -319,7 +337,7 @@ a {
                 </div>
 
                  <div class="col-md-3 mb-3">
-                    <h5> <a href="Blog.html">Blog & Guides</a></h5>
+                  <h5> <a href="Blog.html">Blog & Guides</a></h5>
                     <ul class="list-unstyled">
                         <li><a href="#" class="text-white-50 text-decoration-none">Hostel Living Tips
 
