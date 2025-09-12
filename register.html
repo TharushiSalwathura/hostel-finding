@@ -42,8 +42,8 @@
 
     <div class="signup-container">
       <h2>Register</h2>
-      <form action="post_process.php" method="POST" enctype="multipart/form-data">
-        
+      <!-- Change the form action -->
+      <form action="register_process.php" method="POST" enctype="multipart/form-data">
         <!-- Name -->
         <div class="row mb-3">
           <div class="col">
@@ -124,6 +124,12 @@
             <option>Ratnapura</option>
             <option>Kegalle</option>
           </select>
+        </div>
+
+        <!-- Add this after the district dropdown -->
+        <div class="mb-3">
+          <label for="price" class="form-label">Price (LKR)</label>
+          <input type="number" class="form-control" id="price" name="price" required>
         </div>
 
         <!-- Photo Upload -->

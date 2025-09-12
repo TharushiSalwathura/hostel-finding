@@ -253,12 +253,12 @@ a {
 
         <section class="mb-5">
             <h2 class="text-center mb-4"> Search your location here....</h2>
-              <form action="search.php" method="GET">
+              <form action="search_results.html" method="GET">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search for a stay...">
-                  <button class="btn btn-primary" type="button">🔍</button>
+                  <input type="text" class="form-control" name="query" placeholder="Search for a stay...">
+                  <button class="btn btn-primary" type="submit">🔍</button>
                 </div>
-              </form>
+            </form>
         </section>
 
      <!-- Hero / Navigation Image Full Width with Overlay -->
@@ -356,6 +356,50 @@ a {
             </div>
         </div>
     </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Determine room type from URL or page
+    const roomType = window.location.pathname.includes('Single') ? 'single' : 
+                    window.location.pathname.includes('Double') ? 'double' :
+                    window.location.pathname.includes('Shared') ? 'shared' :
+                    window.location.pathname.includes('Family') ? 'family' :
+                    window.location.pathname.includes('Apartments') ? 'apartment' : '';
+    
+    // Fetch rooms from server
+    fetch(`get_rooms.php?type=${roomType}`)
+        .then(response => response.json())
+        .then(rooms => {
+            const roomsGrid = document.querySelector('.ads-grid .row');
+            if (roomsGrid && rooms.length > 0) {
+                roomsGrid.innerHTML = ''; // Clear existing placeholder content
+                
+                rooms.forEach(room => {
+                    const roomCard = `
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="${room.image_path}" class="card-img-top" alt="${room.title}" style="height: 200px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title">${room.title}</h5>
+                                    <p class="card-text">${room.district} District</p>
+                                    <p class="card-text">Price: LKR ${room.price}/month</p>
+                                    <p class="card-text">Facilities: ${room.facilities}</p>
+                                    <a href="${room.google_map_link}" target="_blank" class="btn btn-primary">View Location</a>
+                                    <p class="card-text mt-2">Contact: ${room.contact_info || 'Available after login'}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    roomsGrid.innerHTML += roomCard;
+                });
+            } else if (roomsGrid) {
+                roomsGrid.innerHTML = '<div class="col-12"><p class="text-center">No rooms available at the moment.</p></div>';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching rooms:', error);
+        });
+      });
+    </script>
 
     <!-- Bootstrap JS + jQuery + Popper -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayNest Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', Helvetica, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #ff7300, #ff8c3a);
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .table-responsive {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .btn-orange {
+            background-color: #ff7300;
+            border-color: #ff7300;
+            color: white;
+        }
+        .btn-orange:hover {
+            background-color: #e66500;
+            border-color: #e66500;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1 class="text-center mb-4">StayNest Admin Dashboard</h1>
+        
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <h3 id="total-rooms">0</h3>
+                    <p>Total Rooms</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <h3 id="total-users">0</h3>
+                    <p>Total Users</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <h3 id="available-rooms">0</h3>
+                    <p>Available Rooms</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Recent Rooms</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Type</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recent-rooms">
+                                    <!-- Will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Database Operations</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-orange mb-2" onclick="exportDatabase()">Export Database</button>
+                            <button class="btn btn-info mb-2" onclick="refreshData()">Refresh Data</button>
+                            <button class="btn btn-warning mb-2" onclick="testConnection()">Test Connection</button>
+                            <button class="btn btn-danger" onclick="clearAllData()">Clear All Data</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch data from the server
+        async function fetchData() {
+            try {
+                const response = await fetch('admin_api.php?action=stats');
+                const data = await response.json();
+                
+                // Update statistics
+                document.getElementById('total-rooms').textContent = data.total_rooms;
+                document.getElementById('total-users').textContent = data.total_users;
+                document.getElementById('available-rooms').textContent = data.available_rooms;
+                
+                // Update recent rooms table
+                const recentRoomsTable = document.getElementById('recent-rooms');
+                recentRoomsTable.innerHTML = '';
+                
+                data.recent_rooms.forEach(room => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${room.title}</td>
+                        <td>${room.room_type}</td>
+                        <td>LKR ${room.price}</td>
+                    `;
+                    recentRoomsTable.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                alert('Error fetching data. Check console for details.');
+            }
+        }
+        
+        // Function to test database connection
+        async function testConnection() {
+            try {
+                const response = await fetch('admin_api.php?action=test_connection');
+                const result = await response.json();
+                alert(result.message);
+            } catch (error) {
+                console.error('Error testing connection:', error);
+                alert('Error testing connection. Check console for details.');
+            }
+        }
+        
+        // Function to export database
+        function exportDatabase() {
+            window.open('admin_api.php?action=export', '_blank');
+        }
+        
+        // Function to refresh data
+        function refreshData() {
+            fetchData();
+            alert('Data refreshed!');
+        }
+        
+        // Function to clear all data (with confirmation)
+        function clearAllData() {
+            if (confirm('Are you sure you want to clear all data? This action cannot be undone!')) {
+                fetch('admin_api.php?action=clear_data', { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        fetchData();
+                    })
+                    .catch(error => {
+                        console.error('Error clearing data:', error);
+                        alert('Error clearing data. Check console for details.');
+                    });
+            }
+        }
+        
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', fetchData);
+    </script>
+</body>
+</html>
